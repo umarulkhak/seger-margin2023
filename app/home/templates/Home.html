@@ -1,0 +1,159 @@
+{% extends "base-site.html" %} {% block title %} Home {% endblock %} {%
+    block content %}
+    <div class="my-3 my-md-5">
+      <div class="container">
+
+        <!-- Form  -->
+        <div class="col-md-6 col-xl-12">
+          <div class="card">
+            <div class="card-status bg-green"></div>
+            <form action="/rekomendasi" method="post" enctype="multipart/form-data" class="m-4">
+            <div class="form-row">
+            <!-- Inputan -->
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">Area</label>
+                <select class="form-control" name="area">
+                  <option>---</option>
+                  <option value="1">JAWA TIMUR</option>
+                  <option value="2">JAWA TENGAH</option>
+                  <option value="3">JAKARTA</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="exampleInputEmail1">SC Price</label>
+                <input type="number" step="0.01" class="form-control" name="sc_price" id="sc_price">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="exampleInputEmail1">Qty Kirim</label>
+                <input type="number" step="0.01" class="form-control" name="qty_kirim" id="qty_kirim">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="exampleInputEmail1">Avg HPP</label>
+                <input type="number" step="0.01" class="form-control" name="avg_hpp" id="avg_hpp">
+              </div>
+              
+              <div class="form-group col-md-2">
+                <label for="exampleInputEmail1">Avg OA</label>
+                <input type="number" step="0.01" class="form-control" name="avg_oa" id="avg_oa">
+              </div>
+        </div>
+
+        <!-- Buttom Rekomendasi -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <button type="submit" name="submit" value="submit" class="btn btn-dark">
+                    Recommendations
+                  </button>
+                </div>
+              </div>
+            </form>
+          <!-- Title hasil rekomendasi -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Hasil Recommendations</h5>
+                </div>
+                <!-- Header Table hasil rekomendasi -->
+                    <div class="table-responsive">
+                      <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                        <thead>
+                          <tr>
+                            <th class="">Area</th>
+                            <th class="">SC Price</th>
+                            <th class="">Qty Kirim</th>
+                            <th class="">Avg HPP</th>
+                            <th class="">Avg OA</th>
+                            <th class="">Margin/kg</th>
+                            <th class="">Asal</th>
+                            <th class="">Tranportasi</th>
+                            <th class=""><i class="icon-settings"></i></th>
+                          </tr>
+                        </thead>
+                        <!-- Body Hasil Rekomendasi -->
+                        <tbody>
+                          <tr>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{area}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{sc_price}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{qty_kirim}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{avg_hpp}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{avg_oa}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if margin %}
+                                  <strong>{{margin}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if asal %}
+                                  <strong>{{asal}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <div class="float-left">
+                                {% if transport %}
+                                  <strong>{{transport}}</strong>
+                                {% endif %}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              {% if transport %}
+                                    <div>
+                                      <img
+                                        src="{{ image }}"
+                                        alt="Image"
+                                        class="rounded mx-auto d-block my-3"
+                                        height="50"
+                                      />
+                                    </div>
+                                    {% endif %}
+                            </td>
+                          </tr>
+                        </tbody>     
+                      </table> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    
